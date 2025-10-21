@@ -13,12 +13,20 @@
 # 2. New Project 클릭
 # 3. 정보 입력:
 #    - Name: baemin-boss-raid
-#    - Password: [안전한 비밀번호]
+#    - Password: woowa0625raid
 #    - Region: Northeast Asia (Seoul)
 # 4. SQL Editor > New query
 # 5. database_raid_setup.sql 내용 붙여넣기 > Run
 # 6. Settings > API에서 URL과 anon key 복사
 ```
+
+anon 키
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZyc21icGxjc3NscnBib3RxbXRwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjEwMzU2MjAsImV4cCI6MjA3NjYxMTYyMH0.zUhR4oH0xhUuxBxOY8TsVHqMN7TejwDYlk690cmXyK4
+
+service_role
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZyc21icGxjc3NscnBib3RxbXRwIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2MTAzNTYyMCwiZXhwIjoyMDc2NjExNjIwfQ.BDOCrL8ueL6XCVKHxeba2ZqUnF10NFuhjKkcO1gnBK8
+
+
 
 ---
 
