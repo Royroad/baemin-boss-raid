@@ -4,6 +4,12 @@
   "devCommand": "npm start",
   "installCommand": "npm install",
   "framework": "create-react-app",
-  "regions": ["icn1"]
+  "regions": ["icn1"],
+  "rewrites": [
+    {
+      "source": "/og_image.png",
+      "destination": "/og_image.png"
+    }
+  ]
 }
 

@@ -27,7 +27,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && cp public/og_image.png build/og_image.png",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "sync:raid": "node scripts/raid-sync.js"
