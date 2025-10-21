@@ -1,6 +1,6 @@
 {
-  "name": "baemin-lounge",
-  "version": "0.1.0",
+  "name": "baemin-boss-raid",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@supabase/supabase-js": "^2.52.1",
@@ -12,13 +12,17 @@
     "dotenv": "^17.2.1",
     "google-auth-library": "^10.2.0",
     "google-spreadsheet": "^4.1.5",
+    "leaflet": "^1.9.4",
     "node-fetch": "^2.7.0",
     "react": "^19.1.0",
     "react-bootstrap": "^2.10.10",
+    "react-countup": "^6.5.3",
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
+    "react-leaflet": "^5.0.0",
     "react-router-dom": "^7.7.1",
     "react-scripts": "5.0.1",
+    "recharts": "^3.3.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -26,14 +30,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "sync:csv": "node scripts/sync-spreadsheet.js",
-    "sync:install": "npm install csv-parser --save-dev",
-    "sync:setup": "node scripts/setup-sync.js",
-    "sync:test": "node scripts/test-sync.js",
-    "sync:sheets": "node scripts/google-sheets-sync.js",
-    "sync:full": "node scripts/sync-bidirectional.js",
-    "sync:counseling": "node scripts/counseling-sync.js",
-    "sync:voc": "node scripts/unified-voc-sync.js"
+    "sync:raid": "node scripts/raid-sync.js"
   },
   "eslintConfig": {
     "extends": [

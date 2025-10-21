@@ -1,0 +1,66 @@
+/**
+ * Header 컴포넌트 스타일
+ */
+
+/* 카운트다운 타이머 스타일 */
+.countdown-timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.timer-display {
+  background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 200px;
+}
+
+.timer-label {
+  font-size: 1.2rem;
+  font-weight: 700;
+  opacity: 0.95;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.timer-time {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .timer-display {
+    padding: 0.8rem 1.5rem;
+    min-width: 180px;
+  }
+  
+  .timer-time {
+    font-size: 1.5rem;
+  }
+  
+  .timer-label {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .timer-display {
+    padding: 0.6rem 1rem;
+    min-width: 160px;
+  }
+  
+  .timer-time {
+    font-size: 1.2rem;
+  }
+}

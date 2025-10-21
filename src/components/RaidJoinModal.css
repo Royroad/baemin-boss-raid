@@ -1,0 +1,188 @@
+/**
+ * 레이드 참여 모달 스타일
+ */
+
+.raid-join-modal .modal-content {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border: 2px solid #0f3460;
+  color: #fff;
+}
+
+.raid-modal-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.raid-modal-header .modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.raid-modal-header .btn-close {
+  filter: invert(1);
+}
+
+.raid-modal-body {
+  padding: 2rem;
+}
+
+.raid-info-box {
+  background: rgba(0, 217, 255, 0.1);
+  border: 1px solid rgba(0, 217, 255, 0.3);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.raid-info-box h5 {
+  color: #00d9ff;
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+}
+
+.raid-info-box p {
+  color: #aaa;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Form 스타일 */
+.raid-join-modal .form-label {
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.raid-input {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #fff !important;
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  padding: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.raid-input:focus {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: #00d9ff !important;
+  box-shadow: 0 0 0 0.2rem rgba(0, 217, 255, 0.25) !important;
+  color: #fff !important;
+}
+
+.raid-input::placeholder {
+  color: #666;
+}
+
+.raid-input:disabled {
+  background: rgba(255, 255, 255, 0.02) !important;
+  opacity: 0.6;
+}
+
+.form-text {
+  color: #888 !important;
+  font-size: 0.85rem;
+}
+
+/* 버튼 영역 */
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: flex-end;
+}
+
+.modal-actions .btn {
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.modal-actions .btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.modal-actions .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-raid-join {
+  background: linear-gradient(135deg, #00d9ff 0%, #0096ff 100%) !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(0, 217, 255, 0.3);
+}
+
+.btn-raid-join:hover:not(:disabled) {
+  background: linear-gradient(135deg, #00e5ff 0%, #00a5ff 100%) !important;
+  box-shadow: 0 6px 20px rgba(0, 217, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-raid-join:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* 참여 안내 */
+.raid-join-notice {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: rgba(255, 193, 7, 0.1);
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+.raid-join-notice p {
+  color: #ffc107;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.raid-join-notice ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: #ccc;
+}
+
+.raid-join-notice li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+/* Alert 스타일 */
+.raid-join-modal .alert {
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+/* 반응형 */
+@media (max-width: 576px) {
+  .raid-modal-body {
+    padding: 1.5rem;
+  }
+  
+  .raid-info-box {
+    padding: 1rem;
+  }
+  
+  .raid-info-box h5 {
+    font-size: 1.1rem;
+  }
+  
+  .modal-actions {
+    flex-direction: column;
+  }
+  
+  .modal-actions .btn {
+    width: 100%;
+  }
+}
+

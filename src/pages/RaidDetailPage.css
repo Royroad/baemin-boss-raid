@@ -1,0 +1,407 @@
+/**
+ * 레이드 상세 페이지 스타일
+ */
+
+.raid-detail-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0a0a0a 0%, #1a1a2e 100%);
+  padding-bottom: 3rem;
+}
+
+/* 백버튼 */
+.back-button {
+  margin: 1.5rem 0;
+  padding: 0.5rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  transform: translateX(-5px);
+}
+
+/* 보스 헤더 */
+.boss-header {
+  background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+  padding: 3rem 0;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.boss-image-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.boss-image {
+  width: 100%;
+  max-width: 350px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 3px solid #00d9ff;
+  box-shadow: 0 8px 30px rgba(0, 217, 255, 0.4);
+}
+
+.boss-placeholder-large {
+  width: 100%;
+  max-width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(255, 68, 0, 0.3) 0%, rgba(0, 0, 0, 0.8) 100%);
+  border-radius: 16px;
+  border: 3px solid #ff4400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 30px rgba(255, 68, 0, 0.4);
+}
+
+.boss-type-icon-large {
+  font-size: 10rem;
+  filter: drop-shadow(0 0 40px rgba(255, 68, 0, 1));
+  animation: float 3s ease-in-out infinite;
+}
+
+/* 보스 정보 */
+.boss-info {
+  color: #fff;
+}
+
+.boss-badges {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.boss-badges span {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.badge-district {
+  background: rgba(0, 217, 255, 0.2);
+  border: 1px solid rgba(0, 217, 255, 0.5);
+  color: #00d9ff;
+}
+
+.badge-status {
+  border: 1px solid;
+}
+
+.badge-status.status-active {
+  background: rgba(0, 255, 136, 0.2);
+  border-color: rgba(0, 255, 136, 0.5);
+  color: #00ff88;
+}
+
+.badge-status.status-completed {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: rgba(255, 215, 0, 0.5);
+  color: #ffd700;
+}
+
+.badge-buff {
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.3), rgba(255, 152, 0, 0.3));
+  border: 1px solid #ffc107;
+  color: #ffc107;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 193, 7, 0.8);
+  }
+}
+
+.boss-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.boss-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.boss-stat {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.boss-stat .stat-icon {
+  font-size: 2.5rem;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+}
+
+.boss-stat .stat-value {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #00d9ff;
+  font-family: 'Courier New', monospace;
+  line-height: 1;
+}
+
+.boss-stat .stat-label {
+  font-size: 0.85rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-join-raid {
+  padding: 1rem 3rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff4444 100%);
+  border: none;
+  box-shadow: 0 4px 20px rgba(255, 107, 107, 0.4);
+  transition: all 0.3s ease;
+}
+
+.btn-join-raid:hover {
+  background: linear-gradient(135deg, #ff7b7b 0%, #ff5555 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(255, 107, 107, 0.6);
+}
+
+/* 버프 공지 배너 */
+.buff-notice-banner {
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.2), rgba(255, 152, 0, 0.2));
+  border-top: 2px solid #ffc107;
+  border-bottom: 2px solid #ffc107;
+  padding: 1.5rem 0;
+  margin-bottom: 2rem;
+  animation: pulse-banner 3s ease-in-out infinite;
+}
+
+@keyframes pulse-banner {
+  0%, 100% {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.2), rgba(255, 152, 0, 0.2));
+  }
+  50% {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.3), rgba(255, 152, 0, 0.3));
+  }
+}
+
+.buff-notice-content {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  color: #fff;
+}
+
+.buff-icon {
+  font-size: 3rem;
+  filter: drop-shadow(0 4px 8px rgba(255, 193, 7, 0.8));
+}
+
+.buff-text strong {
+  font-size: 1.3rem;
+  color: #ffc107;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.buff-text p {
+  margin: 0;
+  color: #ccc;
+  font-size: 1rem;
+}
+
+/* 메인 컨텐츠 */
+.raid-main-content {
+  margin-top: 2rem;
+}
+
+.content-section {
+  margin-bottom: 2rem;
+}
+
+.sticky-section {
+  position: sticky;
+  top: 20px;
+}
+
+.hp-progress-text {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+/* 보상 섹션 */
+.reward-section {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border: 2px solid #0f3460;
+  border-radius: 16px;
+  padding: 2rem;
+  margin-top: 3rem;
+}
+
+.reward-section h3 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.reward-card {
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.reward-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.reward-1st {
+  border-color: #ffd700;
+}
+
+.reward-1st:hover {
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+}
+
+.reward-2nd {
+  border-color: #c0c0c0;
+}
+
+.reward-2nd:hover {
+  box-shadow: 0 8px 25px rgba(192, 192, 192, 0.4);
+}
+
+.reward-participant {
+  border-color: #cd7f32;
+}
+
+.reward-participant:hover {
+  box-shadow: 0 8px 25px rgba(205, 127, 50, 0.4);
+}
+
+.reward-rank {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.8));
+}
+
+.reward-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.reward-desc {
+  font-size: 1rem;
+  color: #aaa;
+}
+
+.reward-bonus {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(0, 217, 255, 0.1);
+  border: 1px solid rgba(0, 217, 255, 0.3);
+  border-radius: 12px;
+  color: #ccc;
+  font-size: 1.1rem;
+}
+
+.reward-bonus strong {
+  color: #00d9ff;
+}
+
+/* 반응형 */
+@media (max-width: 992px) {
+  .sticky-section {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .boss-header {
+    padding: 2rem 0;
+  }
+  
+  .boss-image,
+  .boss-placeholder-large {
+    max-width: 250px;
+    height: 250px;
+  }
+  
+  .boss-type-icon-large {
+    font-size: 7rem;
+  }
+  
+  .boss-title {
+    font-size: 2rem;
+  }
+  
+  .boss-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .btn-join-raid {
+    width: 100%;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+  }
+  
+  .buff-notice-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .reward-card {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .boss-image,
+  .boss-placeholder-large {
+    max-width: 200px;
+    height: 200px;
+  }
+  
+  .boss-title {
+    font-size: 1.5rem;
+  }
+  
+  .hp-progress-text {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+}
+

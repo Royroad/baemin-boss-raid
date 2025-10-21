@@ -1,0 +1,120 @@
+/**
+ * 레이드 카운트다운 스타일
+ */
+
+.raid-countdown {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border: 2px solid #0f3460;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.raid-countdown.expired {
+  background: linear-gradient(135deg, #2a1a1a 0%, #3e1616 100%);
+  border-color: #603030;
+}
+
+.countdown-label {
+  font-size: 1rem;
+  color: #aaa;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.countdown-timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+}
+
+.countdown-value {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #00d9ff;
+  font-family: 'Courier New', monospace;
+  text-shadow: 
+    0 0 10px rgba(0, 217, 255, 0.8),
+    0 0 20px rgba(0, 217, 255, 0.4);
+  line-height: 1;
+}
+
+.countdown-text {
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 0.25rem;
+  text-transform: uppercase;
+}
+
+.countdown-separator {
+  font-size: 2rem;
+  color: #00d9ff;
+  font-weight: bold;
+  margin: 0 0.25rem;
+  opacity: 0.6;
+  animation: blink 2s ease-in-out infinite;
+}
+
+/* 애니메이션 */
+@keyframes blink {
+  0%, 49%, 100% {
+    opacity: 0.6;
+  }
+  50%, 99% {
+    opacity: 0.1;
+  }
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .raid-countdown {
+    padding: 1rem;
+  }
+  
+  .countdown-value {
+    font-size: 1.8rem;
+  }
+  
+  .countdown-unit {
+    min-width: 45px;
+  }
+  
+  .countdown-separator {
+    font-size: 1.5rem;
+  }
+  
+  .countdown-text {
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .countdown-timer {
+    gap: 0.25rem;
+  }
+  
+  .countdown-value {
+    font-size: 1.5rem;
+  }
+  
+  .countdown-unit {
+    min-width: 35px;
+  }
+  
+  .countdown-separator {
+    font-size: 1.2rem;
+    margin: 0 0.1rem;
+  }
+}
+

@@ -1,0 +1,41 @@
+name: Boss Raid Sync
+
+# 매일 자정(한국시간 오전 9시 UTC)과 정오(한국시간 오후 9시 UTC)에 실행
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 매일 자정 (UTC), 한국시간 오전 9시
+    - cron: '0 12 * * *' # 매일 정오 (UTC), 한국시간 오후 9시
+  workflow_dispatch: # 수동 실행 가능
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run Boss Raid Sync
+        env:
+          REACT_APP_SUPABASE_URL: ${{ secrets.REACT_APP_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          GOOGLE_RAID_SHEET_ID: ${{ secrets.GOOGLE_RAID_SHEET_ID }}
+          GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
+          GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+        run: npm run sync:raid
+      
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "Boss Raid sync failed at $(date)"
+          # 여기에 슬랙 알림 등을 추가할 수 있습니다
+

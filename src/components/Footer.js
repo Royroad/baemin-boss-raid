@@ -14,7 +14,7 @@ const Footer = () => {
         {/* 제안 안내 메시지 */}
         <div className="footer-suggestion-note">
           <small className="text-light">
-            💡 라이더님의 소중한 제안을 언제나 환영합니다
+            💡 라이더님의 안전한 레이드를 기원합니다
           </small>
         </div>
       </div>

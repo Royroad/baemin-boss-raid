@@ -1,0 +1,316 @@
+/**
+ * 보스 레이드 지도 스타일
+ */
+
+.boss-raid-map-container {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.boss-raid-map {
+  width: 100%;
+  height: 500px;
+  z-index: 1;
+}
+
+/* 보스 마커 애니메이션 */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes bossPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 3px 8px rgba(255, 107, 107, 0.4);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes criticalBlink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.boss-marker-icon {
+  background: transparent !important;
+  border: none !important;
+  text-align: center;
+}
+
+/* 보스 마커 컨테이너 */
+.boss-marker-container {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.boss-marker-container:hover {
+  transform: scale(1.1);
+  z-index: 1000;
+}
+
+/* 보스 아이콘 기본 스타일 */
+.boss-icon {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.boss-icon:hover {
+  transform: scale(1.05);
+}
+
+/* HP 오버레이 바 */
+.boss-hp-overlay {
+  z-index: 10;
+}
+
+.boss-hp-fill {
+  position: relative;
+  overflow: hidden;
+}
+
+.boss-hp-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shimmer 2s infinite;
+}
+
+/* HP 텍스트 스타일 */
+.boss-hp-text {
+  z-index: 20;
+  pointer-events: none;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* 보스 상태별 애니메이션 클래스 */
+.boss-healthy {
+  animation: bossPulse 2s ease-in-out infinite;
+}
+
+.boss-wounded {
+  animation: bossPulse 1.5s ease-in-out infinite;
+  filter: brightness(0.9);
+}
+
+.boss-critical {
+  animation: criticalBlink 1s ease-in-out infinite;
+  filter: brightness(0.7) saturate(1.2);
+}
+
+.boss-defeated {
+  animation: none;
+  filter: grayscale(0.8) brightness(0.5);
+  opacity: 0.6;
+}
+
+.boss-paused {
+  animation: none;
+  filter: grayscale(0.3);
+  opacity: 0.8;
+}
+
+/* 팝업 스타일 */
+.boss-popup .leaflet-popup-content-wrapper {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #fff;
+  border-radius: 12px;
+  padding: 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+  border: 2px solid #0f3460;
+}
+
+.boss-popup .leaflet-popup-tip {
+  background: #16213e;
+}
+
+.popup-content {
+  padding: 1rem;
+  min-width: 200px;
+}
+
+.popup-content h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+  color: #00d9ff;
+  text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+}
+
+.popup-district {
+  margin: 0 0 1rem 0;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.popup-hp {
+  margin-bottom: 1rem;
+}
+
+.popup-hp-bar {
+  width: 100%;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.popup-hp-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00ff88 0%, #00cc66 100%);
+  transition: width 0.3s ease;
+}
+
+.popup-hp-text {
+  font-size: 0.85rem;
+  color: #ccc;
+  font-family: 'Courier New', monospace;
+}
+
+.popup-button {
+  width: 100%;
+  padding: 0.5rem;
+  background: linear-gradient(135deg, #00d9ff 0%, #0096ff 100%);
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.popup-button:hover {
+  background: linear-gradient(135deg, #00e5ff 0%, #00a5ff 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 217, 255, 0.4);
+}
+
+/* 지도 범례 */
+.map-legend {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(26, 26, 46, 0.95);
+  border: 2px solid #0f3460;
+  border-radius: 12px;
+  padding: 1rem;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+.map-legend h5 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.legend-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+.legend-icon {
+  font-size: 1.2rem;
+}
+
+.legend-icon.active {
+  color: #00ff88;
+}
+
+.legend-icon.inactive {
+  color: #666;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .boss-raid-map {
+    height: 400px;
+  }
+  
+  .map-legend {
+    bottom: 10px;
+    right: 10px;
+    padding: 0.75rem;
+  }
+  
+  .map-legend h5 {
+    font-size: 0.9rem;
+  }
+  
+  .legend-item {
+    font-size: 0.75rem;
+  }
+  
+  /* 보스 마커 모바일 최적화 */
+  .boss-marker-container {
+    transform: scale(0.8);
+  }
+  
+  .boss-hp-text {
+    font-size: 8px !important;
+    padding: 1px 4px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .boss-raid-map {
+    height: 300px;
+  }
+  
+  .popup-content {
+    padding: 0.75rem;
+    min-width: 160px;
+  }
+  
+  .popup-content h4 {
+    font-size: 1rem;
+  }
+  
+  /* 보스 마커 초소형 화면 최적화 */
+  .boss-marker-container {
+    transform: scale(0.7);
+  }
+  
+  .boss-hp-text {
+    font-size: 7px !important;
+    top: -15px !important;
+  }
+}
+

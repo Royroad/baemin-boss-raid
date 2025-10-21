@@ -1,107 +1,122 @@
-# 🏢 배민커넥트 라운지 웹사이트
+# ⚔️ 배민커넥트 보스 레이드
 
-라이더님들을 위한 편안한 휴식 공간, 배민커넥트 라운지의 공식 웹사이트입니다.
+라이더님들의 배달 활동을 게임화하여 동기부여를 제공하는 보스 레이드 시스템입니다.
 
-## ✨ **주요 기능**
+## ✨ 주요 기능
 
-### 🏠 **라운지 소개**
-- 라운지 시설 및 편의사항 안내
-- 위치 및 운영시간 정보
-- 갤러리 및 FAQ
+### ⚔️ 보스 레이드 시스템
+- **구 단위 보스**: 각 구별 필드 보스 배치 및 실시간 HP 표시
+- **레이드 참여**: 라이더 ID로 명시적 참여 및 랭킹 시스템
+- **데미지 시스템**: 배달 1건당 10 데미지, 우천/할증 시 2배
+- **실시간 랭킹**: TOP 20 라이더 랭킹 (일단위 갱신)
+- **보상 시스템**: 실제 보상(1등) + 가상 보상(전체) + 명예 배지
+- **지도 뷰**: Leaflet 기반 서울시 구별 보스 위치 표시
+- **일별 데미지 차트**: Recharts 기반 데이터 시각화
 
-### 💡 **라이더 제안함** (Supabase 연동)
-- **통계 대시보드**: 총 제안수, 완료수, 진행률 등
-- **개선 완료 아이템**: 라이더 제안으로 실제 개선된 사항들
-- **진행 중인 개선**: 현재 진행 중인 개선 사항과 진행률
-- **검토 중인 제안**: 새로 들어온 제안들
-- **기여자 랭킹**: 가장 많은 기여를 해주신 라이더분들
-- **제안하기**: 새로운 개선 제안 방법 안내
-
-## 🛠️ **기술 스택**
+## 🛠️ 기술 스택
 
 - **Frontend**: React 19, Bootstrap 5, React Router
 - **Backend**: Supabase (PostgreSQL)
 - **Styling**: CSS3, Bootstrap
 - **Icons**: React Icons
+- **Maps**: Leaflet, React-Leaflet (OpenStreetMap)
+- **Charts**: Recharts
+- **Animations**: React-CountUp
 
-## 🚀 **빠른 시작**
+## 🚀 빠른 시작
 
-### 1. 프로젝트 클론 및 설치
+### 1. 프로젝트 설치
 ```bash
-git clone <repository-url>
-cd baemin-lounge
+cd baemin-boss-raid
 npm install
 ```
 
 ### 2. 환경변수 설정
-프로젝트 루트에 `.env.local` 파일을 생성하고 Supabase 정보를 입력:
+프로젝트 루트에 `.env.local` 파일을 생성:
 
 ```bash
+# Supabase
 REACT_APP_SUPABASE_URL=https://your-project-id.supabase.co
 REACT_APP_SUPABASE_ANON_KEY=your-anon-key-here
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+
+# Google Sheets (동기화용)
+GOOGLE_RAID_SHEET_ID=your-raid-sheet-id
+GOOGLE_CLIENT_EMAIL=your-service-account@project.iam.gserviceaccount.com
+GOOGLE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n"
 ```
 
-### 3. 개발 서버 실행
+### 3. 데이터베이스 설정
+Supabase SQL Editor에서 실행:
+```bash
+database_raid_setup.sql
+```
+
+### 4. 개발 서버 실행
 ```bash
 npm start
 ```
 
 브라우저에서 [http://localhost:3000](http://localhost:3000) 접속
 
-## 🗃️ **Supabase 설정**
+## 🗃️ 데이터베이스 구조
 
-라이더 제안함 기능을 사용하려면 Supabase 데이터베이스 설정이 필요합니다.
+**보스 레이드 시스템:**
+- `boss_raids` - 보스 레이드 정보
+- `raid_participants` - 참여자 목록
+- `delivery_logs` - 배달 로그 (Google Sheets 동기화)
+- `raid_damages` - 데미지 기록
+- `raid_rankings` - 랭킹 (일단위 집계)
+- `raid_rewards` - 보상 기록
 
-### 빠른 설정
-1. [SUPABASE_SETUP_GUIDE.md](./SUPABASE_SETUP_GUIDE.md) 가이드 참고
-2. `database_setup.sql` 파일을 Supabase SQL Editor에서 실행
-3. 환경변수 설정 후 서버 재시작
-
-### 데이터베이스 구조
-- **suggestions**: 라이더 제안 데이터
-- **improvements**: 완료된 개선 아이템
-- **progress_items**: 진행 중인 개선 사항
-
-## 📁 **프로젝트 구조**
+## 📁 프로젝트 구조
 
 ```
 src/
 ├── components/          # 재사용 가능한 컴포넌트
-│   ├── Header.js       # 헤더 네비게이션
-│   ├── Footer.js       # 푸터
-│   ├── Gallery.js      # 갤러리
-│   └── ImprovementBanner.js  # 개선사항 배너
+│   ├── BossRaidMap.js  # 보스 레이드 지도 (Leaflet)
+│   ├── BossCard.js     # 보스 카드
+│   ├── RaidHPBar.js    # HP 프로그레스 바
+│   ├── RaidRanking.js  # 랭킹 테이블
+│   ├── RaidJoinModal.js # 참여 모달
+│   ├── RaidCountdown.js # 카운트다운
+│   └── DamageChart.js  # 데미지 차트
 ├── pages/              # 페이지 컴포넌트
-│   ├── MainPage.js     # 메인 페이지
-│   └── SuggestionsPage.js    # 라이더 제안함 페이지
+│   ├── BossRaidPage.js # 보스 레이드 목록 페이지
+│   └── RaidDetailPage.js # 레이드 상세 페이지
 ├── services/           # 데이터 서비스
-│   └── suggestionService.js  # Supabase 연동 로직
+│   └── raidService.js  # Supabase 연동 (보스 레이드)
 ├── config/             # 설정 파일
 │   └── supabase.js     # Supabase 클라이언트 설정
-├── images/             # 이미지 자원
 └── App.js              # 메인 앱 컴포넌트
+
+scripts/
+└── raid-sync.js        # 보스 레이드 동기화
+
+public/
+└── boss-images/        # 보스 이미지 리소스
 ```
 
-## 🎨 **스타일링**
+## 🎮 게임 메커니즘
 
-- **메인 컬러**: 민트 (`#2AC1BC`)
-- **폰트**: Apple SD Gothic Neo, Malgun Gothic, Nanum Gothic
-- **반응형 디자인**: 모바일 최적화
-- **호버 효과**: 부드러운 애니메이션
+### 데미지 계산
+- 배달 1건 = **10 데미지**
+- 우천 배달 = **20 데미지** (2배)
+- 할증 배달 = **20 데미지** (2배)
+- 레이드 버프 = **배율 적용** (관리자 설정)
 
-## 📱 **주요 화면**
+### 레이드 진행
+1. **참여하기**: 라이더 ID로 레이드 참여 신청
+2. **배달하기**: 해당 구역에서 배달하여 보스에게 데미지
+3. **랭킹 확인**: 매일 자정 랭킹 업데이트
+4. **보상 획득**: 레이드 완료 시 순위별 보상
 
-### 메인 페이지
-- 라운지 소개 및 기본 정보
-- 개선사항 배너 (최근 완료된 개선 사항)
-- 편의시설, 위치, 갤러리, FAQ
+### 보상 시스템
+- 🥇 **1등**: 스타벅스 기프티콘 5만원권 (실제 보상)
+- 🥈 **2-3등**: 특별 달성 배지 (가상 보상)
+- 👥 **참여자**: 레이드 참여 배지
 
-### 라이더 제안함 페이지
-- 실시간 통계 대시보드
-- 개선 완료/진행중/검토중 아이템들
-- 기여자 랭킹 및 새로운 제안 안내
-
-## 🔧 **개발 스크립트**
+## 🔧 개발 스크립트
 
 ```bash
 # 개발 서버 실행
@@ -110,64 +125,82 @@ npm start
 # 프로덕션 빌드
 npm run build
 
-# 테스트 실행
-npm test
-
-# 통합 VOC 동기화 실행 (구글 시트 → Supabase)
-npm run sync:voc
+# 보스 레이드 동기화 실행 (배달로그 → Supabase)
+npm run sync:raid
 ```
-
-## 🌐 **배포**
-
-### Vercel (추천)
-```bash
-npm run build
-# Vercel에 업로드 또는 Git 연동
-```
-
-### 기타 플랫폼
-- Netlify
-- GitHub Pages
-- AWS S3 + CloudFront
 
 ## 🤖 자동 동기화 (GitHub Actions)
 
-`.github/workflows/sync-voc.yml`가 매일 새벽 4시(KST, UTC 19:00)에 자동 실행되며, GitHub Actions 탭에서 수동 실행도 가능합니다.
+`.github/workflows/raid-sync.yml`가 매일 오전 9시/오후 9시(KST)에 자동 실행
 
-GitHub 리포지토리 Settings → Secrets and variables → Actions 에 아래 시크릿을 등록하세요:
-
-- `SUPABASE_URL`
+GitHub Secrets 등록 필요:
+- `REACT_APP_SUPABASE_URL`
 - `SUPABASE_SERVICE_ROLE_KEY`
-- `GOOGLE_SHEET_ID`
+- `GOOGLE_RAID_SHEET_ID`
 - `GOOGLE_CLIENT_EMAIL`
-- `GOOGLE_PRIVATE_KEY` (개행은 `\n`으로 이스케이프)
+- `GOOGLE_PRIVATE_KEY`
 
-## 📋 **TODO / 향후 계획**
+## 📚 문서
 
-- [ ] 실시간 알림 기능 (Supabase Realtime)
-- [ ] 관리자 대시보드 (제안 승인/거부)
-- [ ] 이메일 알림 (새 제안 시)
-- [ ] 파일 업로드 (Before/After 이미지)
-- [ ] PWA 지원 (오프라인 사용)
+- **상세 가이드**: [BOSS_RAID_GUIDE.md](./BOSS_RAID_GUIDE.md)
+- **데이터베이스 스키마**: [database_raid_setup.sql](./database_raid_setup.sql)
+- **동기화 스크립트**: [scripts/raid-sync.js](./scripts/raid-sync.js)
 
-## 🤝 **기여하기**
+## 🎯 다음 단계
 
-1. Fork 프로젝트
-2. Feature 브랜치 생성 (`git checkout -b feature/amazing-feature`)
-3. 변경사항 커밋 (`git commit -m 'Add amazing feature'`)
-4. 브랜치에 Push (`git push origin feature/amazing-feature`)
-5. Pull Request 생성
+1. ✅ 데이터베이스 설정 (`database_raid_setup.sql` 실행)
+2. ✅ Google Sheets 생성 및 "배달로그" 시트 추가
+3. ✅ 환경변수 설정 (`.env.local`)
+4. ✅ AI로 보스 이미지 생성 → `public/boss-images/`에 저장
+5. ✅ 동기화 테스트 (`npm run sync:raid`)
+6. ✅ 로컬 테스트 (`npm start`)
 
-## 📄 **라이선스**
+## 🌐 배포
 
-이 프로젝트는 MIT 라이선스 하에 배포됩니다.
+### Vercel 배포 (추천)
 
-## 📞 **문의**
+**빠른 배포 (5분):**
+```bash
+# 1. Vercel CLI 설치
+npm install -g vercel
+
+# 2. 로그인
+vercel login
+
+# 3. 배포
+vercel
+
+# 4. 환경변수 설정
+vercel env add REACT_APP_SUPABASE_URL
+vercel env add REACT_APP_SUPABASE_ANON_KEY
+
+# 5. 프로덕션 배포
+vercel --prod
+```
+
+**상세 가이드:**
+- 📘 [Supabase 설정 가이드](./SUPABASE_SETUP.md) - 데이터베이스 설정
+- 📗 [Vercel 배포 가이드](./VERCEL_DEPLOY.md) - 빠른 배포 방법
+- 📕 [전체 배포 가이드](./DEPLOYMENT_GUIDE.md) - 완전한 단계별 설명
+
+**배포 URL:**
+- Production: `https://baemin-boss-raid.vercel.app`
+- Preview: Git push 시 자동 생성
+
+## 🚀 향후 계획
+
+- [ ] 여러 보스 속성 추가 (물, 바람, 땅)
+- [ ] 라이더 클래스 시스템
+- [ ] 길드/팀 레이드
+- [ ] 아이템 시스템
+- [ ] 시즌제 운영
+- [ ] 실시간 알림 (Supabase Realtime)
+
+## 📞 문의
 
 - **카카오톡**: @배민커넥트
 - **이메일**: contact@baemin.com
-- **주소**: 서울 송파구 백제고분로 364 대신빌딩 3층
 
 ---
 
-**💚 라이더님들의 소중한 의견으로 만들어가는 더 나은 라운지!**
+**⚔️ 라이더님들의 활동을 게임처럼 재미있게!**
