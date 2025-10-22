@@ -118,7 +118,7 @@ const BossRaidPage = () => {
               variant={viewMode === 'grid' ? 'primary' : 'outline-primary'}
               onClick={() => setViewMode('grid')}
             >
-              🎴 카드뷰
+              🃏 카드뷰
             </Button>
             <Button 
               variant={viewMode === 'map' ? 'primary' : 'outline-primary'}
