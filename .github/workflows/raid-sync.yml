@@ -1,11 +1,12 @@
 name: Boss Raid Sync
 
 # 매일 자정(한국시간 오전 9시 UTC)과 정오(한국시간 오후 9시 UTC)에 실행
+# 프로젝트 보류로 인해 자동 실행 비활성화 (2024-12-19)
 on:
-  schedule:
-    - cron: '0 0 * * *'  # 매일 자정 (UTC), 한국시간 오전 9시
-    - cron: '0 12 * * *' # 매일 정오 (UTC), 한국시간 오후 9시
-  workflow_dispatch: # 수동 실행 가능
+  # schedule:
+  #   - cron: '0 0 * * *'  # 매일 자정 (UTC), 한국시간 오전 9시
+  #   - cron: '0 12 * * *' # 매일 정오 (UTC), 한국시간 오후 9시
+  workflow_dispatch: # 수동 실행만 가능 (GitHub Actions에서 수동으로 실행 가능)
 
 jobs:
   sync:
